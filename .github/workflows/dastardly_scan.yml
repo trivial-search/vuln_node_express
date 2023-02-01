@@ -1,4 +1,4 @@
-name: Dastardly Scan
+name: DastardlyScan
 on:
   push: 
     branches:
