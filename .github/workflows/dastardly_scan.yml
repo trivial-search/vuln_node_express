@@ -1,4 +1,4 @@
-name: HawkScan
+name: Dastardly Scan
 on:
   push: 
     branches:
