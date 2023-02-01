@@ -1,4 +1,3 @@
-# .github/workflows/build-and-test.yml
 name: HawkScan
 on:
   push: 
@@ -28,12 +27,12 @@ jobs:
         continue-on-error: true                        # This allows subsequent steps to run even if this step fails
         uses: PortSwigger/dastardly-github-action@main
         with:
-        target-url: 'http://localhost:3000'
+          target-url: 'http://localhost:3000'
 
       # You can replace this next step with any JUnit XML parser of your choosing
       - name: Publish Test Report
-      if: always()                                    # Forces this step to always run
+        if: always()                                    # Forces this step to always run
         uses: mikepenz/action-junit-report@v3
         with:
-        report_paths: '**/dastardly-report.xml'       # You need to update this path if you pass in a different output filename to the Dastardly action
-        require_tests: true
+          report_paths: '**/dastardly-report.xml'       # You need to update this path if you pass in a different output filename to the Dastardly action
+          require_tests: true
