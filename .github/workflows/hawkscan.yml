@@ -27,7 +27,7 @@ jobs:
   scan:
     name: Scan
     needs: build
-    runs-on: ubunti-20.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Run HawkScan
         uses: stackhawk/hawkscan-action@v2.0.0
