@@ -7,8 +7,8 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
-  build-and-test:
-    name: Build and Scan
+  build:
+    name: Build
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
@@ -23,7 +23,12 @@ jobs:
       - name: Run unit tests
         run: npm test
       - name: Daemonize our Node API service
-        run: npm run start &
+        run: npm run start &        
+  scan:
+    name: Scan
+    needs: build
+    runs-on: ubunti-20.04
+    steps:
       - name: Run HawkScan
         uses: stackhawk/hawkscan-action@v2.0.0
         with:
@@ -41,3 +46,5 @@ jobs:
         with:
           report_paths: '**/dastardly-report.xml'       # You need to update this path if you pass in a different output filename to the Dastardly action
           require_tests: true
+      
+    
